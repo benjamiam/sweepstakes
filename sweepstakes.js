@@ -12,15 +12,15 @@ let data = require('./infobb.js');
 	const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 	const page = await browser.newPage();
 	await page.goto(data.info.website);
-/*
+
 	await page.type('#first_name', data.info.fname)
-	await page.type('#last_name', data.info.lnane)
+	await page.type('#last_name', data.info.lname)
 	await page.type('#email', data.info.email)
-	await page.type('#street', data.info.street)
+	await page.type('#street', data.info.address)
 	await page.type('#city', data.info.city)
 	await page.type('#state', data.info.state)
 	await page.type('#zip_code', data.info.zip)
-*/
+
 	await page.$$eval('input[type="checkbox"]', checkboxes=> {
 		checkboxes.forEach(chkbox => chkbox.click())
 	});
