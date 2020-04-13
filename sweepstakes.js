@@ -5,22 +5,22 @@
 const puppeteer = require('puppeteer');
 var dt = new Date();
 
-const data = require('./infobb.js');
+let data = require('./infobb.js');
 
 (async () => {
 
 	const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 	const page = await browser.newPage();
-	await page.goto(data.local_info[0]);
-
-	await page.type('#first_name', data.info[0])
-	await page.type('#last_name', data.info[1])
-	await page.type('#email', data.info[2])
-	await page.type('#street', data.info[3])
-	await page.type('#city', data.info[4])
-	await page.type('#state', data.info[5])
-	await page.type('#zip_code', data.info[6])
-
+	await page.goto(data.info.website);
+/*
+	await page.type('#first_name', data.info.fname)
+	await page.type('#last_name', data.info.lnane)
+	await page.type('#email', data.info.email)
+	await page.type('#street', data.info.street)
+	await page.type('#city', data.info.city)
+	await page.type('#state', data.info.state)
+	await page.type('#zip_code', data.info.zip)
+*/
 	await page.$$eval('input[type="checkbox"]', checkboxes=> {
 		checkboxes.forEach(chkbox => chkbox.click())
 	});
@@ -30,16 +30,16 @@ const data = require('./infobb.js');
 		page.click('#send2')
 	]);
 */
-	await page.screenshot({path: data.local_info[1], fullPage: true});
+	await page.screenshot({path: data.info.screenshot, fullPage: true});
 
 	await browser.close();
 
-	await console.log(dt.toString() + info.fname + " Success");
+//	await console.log(dt.toString() + data.info.fname + " Success");
 
 })();
 /*
 	var fs = require('fs')
-	var logger = fs.createWriteStream(data.local_info[3], {
+	var logger = fs.createWriteStream(data.info.log, {
 		flags: 'a' // append 
 	})
 	logger.write("\r\n"+ dt.toString() + data.info.fname + "  Success");
