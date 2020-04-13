@@ -1,11 +1,11 @@
 
 
-// function intervalFunc() {
+function intervalFunc() {
 
 const puppeteer = require('puppeteer');
 var dt = new Date();
 
-let data = require('./infobb.js');
+let data = require('./info.js');
 
 (async () => {
 
@@ -24,29 +24,29 @@ let data = require('./infobb.js');
 	await page.$$eval('input[type="checkbox"]', checkboxes=> {
 		checkboxes.forEach(chkbox => chkbox.click())
 	});
-/*
+
 	await Promise.all([
 		page.waitForNavigation(),
 		page.click('#send2')
 	]);
-*/
+
 	await page.screenshot({path: data.info.screenshot, fullPage: true});
 
 	await browser.close();
 
-//	await console.log(dt.toString() + data.info.fname + " Success");
+	await console.log(dt.toString() + data.info.fname + " Success");
 
 })();
-/*
+
 	var fs = require('fs')
 	var logger = fs.createWriteStream(data.info.log, {
 		flags: 'a' // append 
 	})
 	logger.write("\r\n"+ dt.toString() + data.info.fname + "  Success");
-*/
-/*
+
+
 }
 
-setInterval(intervalFunc, 21720000);
+setInterval(intervalFunc, 21720000); // 6 hours 2 minutes
 
-*/
+
