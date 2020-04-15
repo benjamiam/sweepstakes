@@ -1,6 +1,6 @@
 
 
-// function intervalFunc() {
+function intervalFunc() {
 
 const puppeteer = require('puppeteer');
 var dt = new Date();
